@@ -106,602 +106,216 @@ package-default:
 # custom templates for 'packages' information bellow, reducing
 # redundant information in this file; inherits package-default
 package-configs:
-  core:
-    name: openstack-%(project)s
+  puppet:
+    name: %(project)s
     upstream: git://git.openstack.org/openstack/%(project)s
-    # Current distgit for RDO Liberyt is rdo-liberty branch
-    distgit: git://github.com/openstack-packages/%(project)s
-    patches: git://github.com/redhat-openstack/%(project)s
-    master-distgit: git://github.com/openstack-packages/%(project)s
-  client:
-    name: python-%(project)s
-    upstream: git://git.openstack.org/openstack/python-%(project)s
-    distgit: ssh://pkgs.fedoraproject.org/python-%(project)s.git
-    patches: git://github.com/redhat-openstack/python-%(project)s
-    master-distgit: git://github.com/openstack-packages/python-%(project)s
+    master-distgit:  git://github.com/rdo-puppet-modules/%(project)s-distgit
     maintainers:
-    - jruzicka@redhat.com
-    - hguemar@redhat.com
-  lib:
-    name: python-%(project)s
-    upstream: git://git.openstack.org/openstack/%(project)s
-    distgit: ssh://pkgs.fedoraproject.org/python-%(project)s.git
-    patches: git://github.com/redhat-openstack/%(project)s
-    master-distgit: git://github.com/openstack-packages/python-%(project)s
-    maintainers:
-    - apevec@redhat.com
-    - hguemar@redhat.com
     - lbezdick@redhat.com
-  xstatic:
-    maintainers:
-    - mrunge@redhat.com
+    - jguiditt@redhat.com
+    - gchamoul@redhat.com
 
 packages:
-# core openstack projects
-- project: nova
-  conf: core
-  maintainers:
-  - ndipanov@redhat.com
-  - sferdjao@redhat.com
-- project: keystone
-  conf: core
-  maintainers:
-  - apevec@redhat.com
-- project: glance
-  conf: core
-  maintainers:
-  - hguemar@redhat.com
-- project: glance_store
-  conf: core
-  name: python-glance-store
-  maintainers:
-  - hguemar@redhat.com
-- project: swift
-  conf: core
-  maintainers:
-  - zaitcev@redhat.com
-- project: ceilometer
-  conf: core
-  maintainers:
-  - eglynn@redhat.com
-  - pkilambi@redhat.com
-  - mabaakou@redhat.com
-- project: gnocchi
-  conf: core
-  tags:
-    mitaka:
-    liberty:
-      source-branch: stable/1.3
-  maintainers:
-  - pkilambi@redhat.com
-  - mabaakou@redhat.com
-- project: aodh
-  conf: core
-  maintainers:
-  - pkilambi@redhat.com
-  - mabaakou@redhat.com
-- project: heat
-  conf: core
-  maintainers:
-  - zbitter@redhat.com
-  - ryansb@redhat.com
-- project: cinder
-  conf: core
-  maintainers:
-  - eharney@redhat.com
-  - apevec@redhat.com
-  - hguemar@redhat.com
-- project: ironic
-  conf: core
-  maintainers:
-  - trown@redhat.com
-- project: neutron
-  conf: core
-  maintainers:
-  - ihrachys@redhat.com
-  - majopela@redhat.com
-- project: neutron-lib
-  conf: lib
-  name: python-neutron-lib
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  tags:
-      mitaka:
-  maintainers:
-  - ihrachys@redhat.com
-- project: neutron-fwaas
-  conf: core
-  maintainers:
-  - ihrachys@redhat.com
-  - majopela@redhat.com
-- project: neutron-lbaas
-  conf: core
-  maintainers:
-  - ihrachys@redhat.com
-  - majopela@redhat.com
-- project: neutron-vpnaas
-  conf: core
-  maintainers:
-  - ihrachys@redhat.com
-  - majopela@redhat.com
-- project: designate
-  conf: core
-  maintainers:
-  - ihrachys@redhat.com
-  - majopela@redhat.com
-- project: octavia
-  conf: core
-  maintainers:
-  - nmagnezi@redhat.com
-- project: sahara
-  conf: core
-  maintainers:
-  - egafford@redhat.com
-- project: horizon
-  conf: core
-  name: python-django-horizon
-  distgit: ssh://pkgs.fedoraproject.org/python-django-%(project)s.git
-  maintainers:
-  - mrunge@redhat.com
-- project: trove
-  conf: core
-  maintainers:
-  - victoria@redhat.com
-  - hguemar@redhat.com
-- project: django_openstack_auth
-  conf: lib
-  name: python-django-openstack-auth
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  maintainers:
-  - mrunge@redhat.com
-- project: diskimage-builder
-  conf: core
-  name: diskimage-builder
-  maintainers:
-  - jruzicka@redhat.com
-- project: dib-utils
-  conf: core
-  name: dib-utils
-  maintainers:
-  - jruzicka@redhat.com
-- project: tripleo-incubator
-  name: openstack-tripleo
-  conf: core
-  distgit: ssh://pkgs.fedoraproject.org/openstack-tripleo.git
-  master-distgit: git://github.com/openstack-packages/tripleo
-  maintainers:
-  - jslagle@redhat.com
-- project: tripleo-heat-templates
-  conf: core
-  maintainers:
-  - jruzicka@redhat.com
-- project: tripleo-image-elements
-  conf: core
-  maintainers:
-  - jruzicka@redhat.com
-- project: instack
-  conf: core
-  name: instack
-  maintainers:
-  - jslagle@redhat.com
-- project: instack-undercloud
-  conf: core
-  name: instack-undercloud
-  maintainers:
-  - jslagle@redhat.com
-- project: heat-templates
-  conf: core
-  maintainers:
-  - ryansb@redhat.com
-- project: os-apply-config
-  conf: core
-  name: os-apply-config
-  maintainers:
-  - jruzicka@redhat.com
-- project: os-collect-config
-  conf: core
-  name: os-collect-config
-  maintainers:
-  - jruzicka@redhat.com
-- project: os-net-config
-  conf: core
-  name: os-net-config
-  maintainers:
-  - dprince@redhat.com
-- project: os-refresh-config
-  conf: core
-  name: os-refresh-config
-  maintainers:
-  - jruzicka@redhat.com
-- project: os-cloud-config
-  conf: core
-  name: os-cloud-config
-  maintainers:
-  - jruzicka@redhat.com
-- project: os-client-config
-  conf: lib
-  maintainers:
-  - jruzicka@redhat.com
-- project: os-win
-  name: python-os-win
-  conf: lib
-  upstream: git://git.openstack.org/openstack/%(project)s
-  maintainers:
-  - jpena@redhat.com
-- project: manila
-  conf: core
-  maintainers:
-  - hguemar@redhat.com
-  - zaitcev@redhat.com
-- project: zaqar
-  conf: core
-  maintainers:
-  - hguemar@redhat.com
-  - fpercoco@redhat.com
-- project: ironic-inspector
-  conf: core
-  maintainers:
-  - trown@redhat.com
-  - dtantsur@redhat.com
-- project: ironic-python-agent
-  conf: core
-  maintainers:
-  - trown@redhat.com
-  - dtantsur@redhat.com
-- project: ironic-lib
-  conf: lib
-  maintainers:
-  - trown@redhat.com
-  - dtantsur@redhat.com
-- project: barbican
-  conf: core
-  maintainers:
-  - greg.swift@rackspace.net
-  - msm@redhat.com
-- project: cloudkitty
-  conf: core
-  maintainers:
-  - gauvain.pocentek@objectif-libre.com
-- project: ec2-api
-  conf: core
-  maintainers:
-  - marcos.fermin.lobo@cern.ch
-- project: magnum
-  conf: core
-  maintainers:
-  - chkumar@redhat.com
-  - mathieu.velten@cern.ch
-# The openstack clients
-- project: keystoneclient
-  conf: client
-- project: glanceclient
-  conf: client
-- project: novaclient
-  conf: client
-- project: swiftclient
-  conf: client
-- project: ceilometerclient
-  conf: client
-- project: heatclient
-  conf: client
-- project: cinderclient
-  conf: client
-- project: ironicclient
-  conf: client
-- project: neutronclient
-  conf: client
-  maintainers:
-  - ihrachys@redhat.com
-  - jruzicka@redhat.com
-  - hguemar@redhat.com
-- project: saharaclient
-  conf: client
-- project: troveclient
-  conf: client
-- project: designateclient
-  conf: client
-- project: manilaclient
-  conf: client
-- project: barbicanclient
-  conf: client
-  maintainers:
-  - greg.swift@rackspace.net
-  - msm@redhat.com
-  - chkumar@redhat.com
-- project: cloudkittyclient
-  conf: client
-  maintainers:
-  - gauvain.pocentek@objectif-libre.com
-- project: keystonemiddleware
-  conf: client
-  upstream: git://git.openstack.org/openstack/%(project)s
-- project: ceilometermiddleware
-  conf: client
-  upstream: git://git.openstack.org/openstack/%(project)s
-- project: openstackclient
-  conf: client
-- project: ironic-inspector-client
-  conf: client
-  maintainers:
-  - dtantsur@redhat.com
-- project: tripleoclient
-  conf: client
-  maintainers:
-  - brad@redhat.com
-- project: zaqarclient
-  conf: client
-  maintainers:
-  - hguemar@redhat.com
-  - fpercoco@redhat.com
-- project: openstacksdk
-  conf: client
-- project: gnocchiclient
-  conf: client
-  maintainers:
-  - pkilambi@redhat.com
-# openstack libraries
-- project: mox3
-  conf: lib
-  upstream: git://git.openstack.org/openstack/mox3
-- project: oslotest
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslotest
-- project: oslo-sphinx
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslosphinx
-- project: oslo-i18n
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.i18n
-- project: oslo-messaging
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.messaging
-- project: oslo-cache
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.cache
-- project: oslo-config
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.config
-- project: oslo-concurrency
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.concurrency
-- project: oslo-rootwrap
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.rootwrap
-- project: oslo-serialization
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.serialization
-- project: oslo-middleware
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.middleware
-- project: oslo-db
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.db
-- project: oslo-utils
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.utils
-- project: oslo-vmware
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.vmware
-- project: oslo-context
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.context
-- project: oslo-log
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.log
-- project: oslo-policy
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.policy
-- project: oslo-versionedobjects
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.versionedobjects
-- project: oslo-service
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.service
-- project: oslo-reports
-  conf: lib
-  upstream: git://git.openstack.org/openstack/oslo.reports
-- project: stevedore
-  conf: lib
-- project: castellan
-  conf: lib
-- project: taskflow
-  conf: lib
-- project: pycadf
-  conf: lib
-- project: debtcollector
-  conf: lib
-- project: automaton
-  conf: lib
-- project: cliff
-  conf: lib
-- project: futurist
-  conf: lib
-- project: hacking
-  conf: lib
-  upstream: git://git.openstack.org/openstack-dev/hacking
-# deps
-- project: packstack
-  name: openstack-packstack
-  upstream: git://git.openstack.org/openstack/%(project)s
-  patches: git://github.com/redhat-openstack/%(project)s
-  distgit: ssh://pkgs.fedoraproject.org/%(name)s
-  master-distgit: git://github.com/openstack-packages/%(project)s
-  maintainers:
-  - mmagr@redhat.com
-  - lbezdick@redhat.com
-  - ichavero@redhat.com
-- project: openstack-puppet-modules
-  name: openstack-puppet-modules
-  upstream: git://github.com/redhat-openstack/%(name)s
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  maintainers:
-  - apevec@gmail.com
-  - gchamoul@redhat.com
-  - jpena@redhat.com
-- project: tripleo-common
-  conf: core
-  name: tripleo-common
-  maintainers:
-  - jprovazn@redhat.com
-- project: osprofiler
-  name: python-osprofiler
-  upstream: git://git.openstack.org/openstack/%(project)s
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  maintainers:
-  - apevec@redhat.com
-- project: pysaml2
-  name: python-%(project)s
-  upstream: git://github.com/rohe/pysaml2
-  master-distgit: git://github.com/openstack-packages/python-pysaml2
-  maintainers:
-  - apevec@redhat.com
-- project: appdirs
-  conf: lib
-  upstream: git://github.com/ActiveState/appdirs
-  maintainers:
-  - apevec@redhat.com
-  - jpena@redhat.com
-- project: networking-arista
-  name: python-networking-arista
-  upstream: git://git.openstack.org/openstack/%(project)s
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  maintainers:
-  - ihrachys@redhat.com
-  - majopela@redhat.com
-- project: networking-mlnx
-  name: python-networking-mlnx
-  upstream: git://git.openstack.org/openstack/%(project)s
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  maintainers:
-  - ihrachys@redhat.com
-  - lennyb@mellanox.com
-- project: networking-odl
-  name: python-networking-odl
-  upstream: git://git.openstack.org/openstack/%(project)s
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  maintainers:
-  - ihrachys@redhat.com
-  - majopela@redhat.com
-- project: vmware-nsx
-  name: python-networking-vmware-nsx
-  upstream: git://git.openstack.org/openstack/%(project)s
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  maintainers:
-  - ihrachys@redhat.com
-- project: networking-bigswitch
-  name: python-networking-bigswitch
-  upstream: git://git.openstack.org/openstack/%(project)s
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  maintainers:
-  - ihrachys@redhat.com
-  - xin.wu@bigswitch.com
-- project: networking-cisco
-  name: python-networking-cisco
-  upstream: git://git.openstack.org/openstack/%(project)s
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  maintainers:
-  - openstack-networking@cisco.com
-  - brdemers@cisco.com
-- project: UcsSdk
-  conf: lib
-  upstream: git://github.com/CiscoUcs/UcsPythonSDK
-  maintainers:
-  - openstack-networking@cisco.com
-  - brdemers@cisco.com
-- project: cisco-ironic-contrib
-  name: python-ironic-cisco
-  upstream: git://git.openstack.org/openstack/%(project)s
-  master-distgit: git://github.com/openstack-packages/%(name)s
-  maintainers:
-  - openstack-networking@cisco.com
-  - brdemers@cisco.com
-- project: tripleo-puppet-elements
-  conf: core
-  maintainers:
-  - jslagle@redhat.com
-- project: os-brick
-  name: python-os-brick
-  conf: lib
-  upstream: git://git.openstack.org/openstack/%(project)s
-  master-distgit: git://github.com/openstack-packages/%(project)s
-  maintainers:
-  - eharney@redhat.com
-  - jpena@redhat.com
-- project: cachetools
-  conf: lib
-  upstream: git://github.com/tkem/cachetools.git
-- project: unicodecsv
-  conf: lib
-  upstream: git://github.com/jdunck/python-unicodecsv
-- project: hardware
-  conf: lib
-  upstream: git://github.com/redhat-cip/hardware.git
-  maintainers:
-  - trown@redhat.com
-  - flepied@redhat.com
-- project: keystoneauth1
-  conf: lib
-  upstream: git://github.com/openstack/keystoneauth
-- project: rally
-  conf: core
-  maintainers:
-  - vimartin@redhat.com
-  - slinaber@redhat.com
-- project: tempest
-  conf: core
-  upstream: git://github.com/redhat-openstack/tempest.git
-  source-branch: rebased-upstream
-  maintainers:
-  - slinaber@redhat.com
-  - dmellado@redhat.com
-- project: tempest-lib
-  conf: lib
-  maintainers:
-  - slinaber@redhat.com
-  - dmellado@redhat.com
-- project: os-testr
-  conf: lib
-  maintainers:
-  - slinaber@redhat.com
-  - dmellado@redhat.com
-- project: proliantutils
-  conf: lib
-  maintainers:
-  - ifarkas@redhat.com
-  - trown@redhat.com
-- project: dracclient
-  conf: client
-  maintainers:
-  - ifarkas@redhat.com
-  - trown@redhat.com
-- project: mistralclient
-  conf: client
-  maintainers:
-  - hguemar@redhat.com
-- project: mistral
-  conf: core
-  maintainers:
-  - hguemar@redhat.com
-- project: requestsexceptions
-  conf: lib
-  upstream: git://github.com/openstack-infra/requestsexceptions
-  maintainers:
-  - jpena@redhat.com
-- project: app-catalog-ui
-  conf: core
-  maintainers:
-  - Kevin.Fox@pnnl.gov
-- project: tooz
-  conf: lib
-  maintainers:
-  - apevec@redhat.com
-  - pkilambi@redhat.com
-- project: magnumclient
-  conf: client
-  maintainers:
-    - chkumar@redhat.com
-    - mathieu.velten@cern.ch
-- project: reno
-  conf: lib
-  maintainers:
-  - chkumar@redhat.com
-  - jpena@redhat.com
+# Puppet Modules coming from OpenStack Community
+  - project: puppet-aodh
+    conf: puppet
+  - project: puppet-ceilometer
+    conf: puppet
+  - project: puppet-cinder
+    conf: puppet
+  - project: puppet-glance
+    conf: puppet
+  - project: puppet-gnocchi
+    conf: puppet
+  - project: puppet-heat
+    conf: puppet
+  - project: puppet-horizon
+    conf: puppet
+  - project: puppet-ironic
+    conf: puppet
+  - project: puppet-keystone
+    conf: puppet
+  - project: puppet-manila
+    conf: puppet
+  - project: puppet-neutron
+    conf: puppet
+  - project: puppet-nova
+    conf: puppet
+  - project: puppet-openstack_extras
+    conf: puppet
+  - project: puppet-openstacklib
+    conf: puppet
+  - project: puppet-sahara
+    conf: puppet
+  - project: puppet-swift
+    conf: puppet
+  - project: puppet-tempest
+    conf: puppet
+  - project: puppet-tripleo
+    conf: puppet
+  - project: puppet-trove
+    conf: puppet
+  - project: puppet-tuskar
+    conf: puppet
+  - project: puppet-vswitch
+    conf: puppet
+  - project: puppet-ceph
+    conf: puppet
+  - project: puppet-n1k-vsm
+    conf: puppet
+  - project: puppet-mistral
+    conf: puppet
+  - project: puppet-zaqar
+    conf: puppet
+# Puppet Modules coming from PuppetLabs
+  - project: puppetlabs-apache
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-concat
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-firewall
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-haproxy
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-corosync
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-git
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-inifile
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-mongodb
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-mysql
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-java
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-ntp
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-rabbitmp
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-rsync
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-stdlib
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-sysctl
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-tomcat
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-vcsrepo
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  - project: puppetlabs-xinetd
+    conf: puppet
+    upstream: git://github.com/puppetlabs/%(project)s
+  # Puppet Modules coming from others
+  - project: cassandra
+    conf: puppet
+    upstream: git://github.com/locp/cassandra.git
+  - project: puppet-certmonger
+    conf: puppet
+    upstream: git://github.com/rcritten/%(project)s
+  - project: puppet-common
+    conf: puppet
+    upstream: git://github.com/purpleidea/%(project)s
+  - project: puppet-contrail
+    conf: puppet
+    upstream: git://github.com/redhat-cip/%(project)s
+  - project: puppet-datacat
+    conf: puppet
+    upstream: git://github.com/richardc/%(project)s
+  - project: puppet-elasticsearch
+    conf: puppet
+    upstream: git://github.com/elastic/%(project)s
+  - project: puppet-gluster
+    conf: puppet
+    upstream: git://github.com/purpleidea/%(project)s
+  - project: puppet-kafka
+    conf: puppet
+    upstream: git://github.com/puppet-community/%(project)s
+  - project: konstantin-fluentd
+    conf: puppet
+    upstream: git://github.com/soylent/konstantin-fluentd.git
+  - project: puppet-module-keepalived
+    conf: puppet
+    upstream: git://github.com/Unyonsys/puppet-module-keepalived.git
+  - project: puppet-kibana3
+    conf: puppet
+    upstream: git://github.com/thejandroman/%(project)s
+  - project: puppet-memcached
+    conf: puppet
+    upstream: git://github.com/saz/%(project)s
+  - project: puppet-midonet
+    conf: puppet
+    upstream: git://github.com/midonet/%(project)s
+  - project: puppet-module-collectd
+    conf: puppet
+    upstream: git://github.com/pdxcat/%(project)s
+  - project: puppet-module-data
+    conf: puppet
+    upstream: git://github.com/ripienaar/%(project)s
+  - project: puppet-nagios-openstack
+    conf: puppet
+    upstream: git://github.com/gildub/%(project)s
+  - project: puppet-nssdb
+    conf: puppet
+    upstream: git://github.com/rcritten/%(project)s
+  - project: puppet-opendaylight
+    conf: puppet
+    upstream: git://github.com/dfarrell07/%(project)s
+  - project: puppet-pacemaker
+    conf: puppet
+    upstream: git://github.com/openstack/%(project)s
+  - project: puppet-puppet
+    conf: puppet
+    upstream: git://github.com/purpleidea/%(project)s
+  - project: puppet-qpid
+    conf: puppet
+    upstream: git://github.com/dprince/%(project)s
+  - project: puppet-redis
+    conf: puppet
+    upstream: git://github.com/arioch/%(project)s
+  - project: puppet-remote
+    conf: puppet
+    upstream: git://github.com/paramite/%(project)s
+  - project: sensu-puppet
+    conf: puppet
+    upstream: git://github.com/sensu/sensu-puppet.git
+  - project: puppet-snmp
+    conf: puppet
+    upstream: git://github.com/razoredge/%(project)s
+  - project: puppet-ssh
+    conf: puppet
+    upstream: git://github.com/saz/%(project)s
+  - project: puppet-staging
+    conf: puppet
+    upstream: git://github.com/nanliu/%(project)s
+  - project: puppet-timezone
+    conf: puppet
+    upstream: git://github.com/saz/%(project)s
+  - project: puppet-uchiwa
+    conf: puppet
+    upstream: git://github.com/Yelp/%(project)s
+  - project: puppet-vlan
+    conf: puppet
+    upstream: git://github.com/derekhiggins/%(project)s
+  - project: puppet-zookeeper
+    conf: puppet
+    upstream: git://github.com/deric/%(project)s
+  - project: puppet-kmod
+    conf: puppet
+    upstream: git://github.com/camptocamp/%(project)s
