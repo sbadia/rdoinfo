@@ -107,7 +107,7 @@ package-default:
 # redundant information in this file; inherits package-default
 package-configs:
   puppet:
-    name: %(project)s
+    name: puppet-%(project)s
     upstream: git://git.openstack.org/openstack/%(project)s
     master-distgit:  git://github.com/rdo-puppet-modules/%(project)s-distgit
     maintainers:
@@ -117,55 +117,55 @@ package-configs:
 
 packages:
 # Puppet Modules coming from OpenStack Community
-  - project: puppet-aodh
+  - project: aodh
     conf: puppet
-  - project: puppet-ceilometer
+  - project: ceilometer
     conf: puppet
-  - project: puppet-cinder
+  - project: cinder
     conf: puppet
-  - project: puppet-glance
+  - project: glance
     conf: puppet
-  - project: puppet-gnocchi
+  - project: gnocchi
     conf: puppet
-  - project: puppet-heat
+  - project: heat
     conf: puppet
-  - project: puppet-horizon
+  - project: horizon
     conf: puppet
-  - project: puppet-ironic
+  - project: ironic
     conf: puppet
-  - project: puppet-keystone
+  - project: keystone
     conf: puppet
-  - project: puppet-manila
+  - project: manila
     conf: puppet
-  - project: puppet-neutron
+  - project: neutron
     conf: puppet
-  - project: puppet-nova
+  - project: nova
     conf: puppet
-  - project: puppet-openstack_extras
+  - project: openstack_extras
     conf: puppet
-  - project: puppet-openstacklib
+  - project: openstacklib
     conf: puppet
-  - project: puppet-sahara
+  - project: sahara
     conf: puppet
-  - project: puppet-swift
+  - project: swift
     conf: puppet
-  - project: puppet-tempest
+  - project: tempest
     conf: puppet
-  - project: puppet-tripleo
+  - project: tripleo
     conf: puppet
-  - project: puppet-trove
+  - project: trove
     conf: puppet
-  - project: puppet-tuskar
+  - project: tuskar
     conf: puppet
-  - project: puppet-vswitch
+  - project: vswitch
     conf: puppet
-  - project: puppet-ceph
+  - project: ceph
     conf: puppet
-  - project: puppet-n1k-vsm
+  - project: n1k-vsm
     conf: puppet
-  - project: puppet-mistral
+  - project: mistral
     conf: puppet
-  - project: puppet-zaqar
+  - project: zaqar
     conf: puppet
 # Puppet Modules coming from PuppetLabs
   - project: puppetlabs-apache
