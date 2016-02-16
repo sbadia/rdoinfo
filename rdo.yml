@@ -202,7 +202,7 @@ packages:
   - project: puppetlabs-ntp
     conf: puppet
     upstream: git://github.com/puppetlabs/%(project)s
-  - project: puppetlabs-rabbitmp
+  - project: puppetlabs-rabbitmq
     conf: puppet
     upstream: git://github.com/puppetlabs/%(project)s
   - project: puppetlabs-rsync
