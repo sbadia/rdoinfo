@@ -102,12 +102,14 @@ package-default:
       liberty:
       kilo:
 
+
 # custom templates for 'packages' information bellow, reducing
 # redundant information in this file; inherits package-default
 package-configs:
   puppet:
     name: "%(project)s"
     upstream: git://git.openstack.org/openstack/%(project)s
+    distgit:  git://github.com/rdo-puppet-modules/%(project)s-distgit
     master-distgit:  git://github.com/rdo-puppet-modules/%(project)s-distgit
     maintainers:
     - lbezdick@redhat.com
