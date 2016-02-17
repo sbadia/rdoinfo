@@ -298,7 +298,7 @@ packages:
     upstream: git://github.com/sensu/sensu-puppet.git
   - project: puppet-snmp
     conf: puppet
-    upstream: git://github.com/razoredge/%(project)s
+    upstream: git://github.com/razorsedge/%(project)s
   - project: puppet-ssh
     conf: puppet
     upstream: git://github.com/saz/%(project)s
