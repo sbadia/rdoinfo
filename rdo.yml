@@ -211,9 +211,6 @@ packages:
   - project: puppetlabs-stdlib
     conf: puppet
     upstream: git://github.com/puppetlabs/%(project)s
-  - project: puppetlabs-sysctl
-    conf: puppet
-    upstream: git://github.com/puppetlabs/%(project)s
   - project: puppetlabs-tomcat
     conf: puppet
     upstream: git://github.com/puppetlabs/%(project)s
@@ -230,9 +227,6 @@ packages:
   - project: puppet-certmonger
     conf: puppet
     upstream: git://github.com/rcritten/%(project)s
-  - project: puppet-common
-    conf: puppet
-    upstream: git://github.com/purpleidea/%(project)s
   - project: puppet-contrail
     conf: puppet
     upstream: git://github.com/redhat-cip/%(project)s
@@ -242,9 +236,6 @@ packages:
   - project: puppet-elasticsearch
     conf: puppet
     upstream: git://github.com/elastic/%(project)s
-  - project: puppet-gluster
-    conf: puppet
-    upstream: git://github.com/purpleidea/%(project)s
   - project: puppet-kafka
     conf: puppet
     upstream: git://github.com/puppet-community/%(project)s
@@ -281,9 +272,6 @@ packages:
   - project: puppet-pacemaker
     conf: puppet
     upstream: git://github.com/openstack/%(project)s
-  - project: puppet-puppet
-    conf: puppet
-    upstream: git://github.com/purpleidea/%(project)s
   - project: puppet-qpid
     conf: puppet
     upstream: git://github.com/dprince/%(project)s
@@ -320,3 +308,6 @@ packages:
   - project: puppet-kmod
     conf: puppet
     upstream: git://github.com/camptocamp/%(project)s
+  - project: puppet-sysctl
+    conf: puppet
+    upstream: git://github.com/duritong/%(project)s
